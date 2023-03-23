@@ -1,0 +1,83 @@
+uses StrUtils;
+var
+x: array[0..100] of real;
+fx: array[0..100] of real;
+  xx: real;
+  fxx : real;
+  n : integer;
+  d_e : real;
+  varianza : real;
+  des : real;
+  media : real;
+  m : real;
+  i : integer;
+  op : integer;
+begin
+  media := 0;
+  m := 0;
+  op := 0;
+writeln('Cuantos x desea ingresar');
+readln(n);
+while not (op >3) do
+begin
+writeln('----------------MENU DE OPCIONES-----------------');
+writeln('1.- Media');
+writeln('2.- Varianza');
+writeln('3.- Desviacion estandar');
+writeln('4.- Salir');
+writeln('Elija una opcion');
+readln(op);
+case op of
+1:
+begin
+n := n -1;
+for i:= 0 to n do
+begin
+writeln('Ingresa el valor de x ',i);
+readln(xx);
+x[i] := xx;
+writeln('Ingresa el valor de fx');
+readln(fxx);
+fx[i]:=fxx;
+end;
+for i:= 0 to n do
+begin
+media := media + (x[i] * fx[i]);
+end;
+
+writeln('La media es de:  ', media:2:4);
+end;
+2:
+begin
+if  media = 0 then
+writeln('No puede ingresar porque aun no a sacado la media')
+else
+begin
+  for i := 0 to n do
+  begin
+  varianza := varianza + ((x[i] * x[i]) * fx[i]);
+  end;
+  varianza := varianza / (media * media);
+  writeln('La varianza es de ', varianza);
+end;
+end;
+
+3:
+begin
+if media = 0 then
+writeln('No puede acceder a este aparatado porque no a sacado la media')
+else
+
+
+  writeln('L a desviacion estandar es de ',sqrt(varianza));
+
+
+end;
+
+end;
+
+
+
+   end;
+
+end.
